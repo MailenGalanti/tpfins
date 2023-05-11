@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h1>TPfins - loan analysis tool</h1>
+<br>
+<form action="{% url 'search_benchmark' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="search">
+    <input type="submit" value="Search benchmarks by country">
+  </form>
+{% endblock contenido %}

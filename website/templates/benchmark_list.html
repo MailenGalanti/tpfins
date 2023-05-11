@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <h1>Benchmark List</h1>
+    <br><br>
+    <form action="{% url 'search_benchmark' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="search">
+      <input type="submit" value="Search benchmarks by country">
+    </form>
+    <br>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Type Analysis</th>
+          <th>Country</th>
+          <th>Industry</th>
+          <th>Credit rating of the borrower</th>
+        </tr>
+        {% for benchmark in benchmarks %}
+        <tr>
+          <td>{{ benchmark.type_analysis }}</td>
+          <td>{{ benchmark.country }}</td>
+          <td>{{ benchmark.industry }}</td>
+          <td>{{ benchmark.credit_rating_borrower }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</section>
+{% endblock contenido %}
