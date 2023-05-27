@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 class Contact(models.Model):
@@ -12,21 +12,18 @@ class Contact(models.Model):
 
 
 class Benchmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     type_analysis = models.CharField(max_length=256)
     country = models.CharField(max_length=256)
     industry = models.CharField(max_length=256)
     credit_rating_borrower = models.CharField(max_length=256)
-
-    def __str__(self):
-        return f"{self.type_analysis}, {self.country}"
-
-class TPfinsTool(models.Model):
     currency = models.CharField(max_length=256)
     principal = models.CharField(max_length=256)
     type_of_interest_rate = models.CharField(max_length=256)
     base_rate = models.CharField(max_length=256)
 
     def __str__(self):
-        return f"{self.currency}, {self.principal}"
+        return f"{self.type_analysis}, {self.country}"
+
 
 

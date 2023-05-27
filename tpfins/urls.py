@@ -24,4 +24,5 @@ urlpatterns = [
     path("", inicio, name="inicio"),
     path("admin/", admin.site.urls),
     path("tools/", include("website.urls")),
+    path("accounts/", include("accounts.urls")),
 ]

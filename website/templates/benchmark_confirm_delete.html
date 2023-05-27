@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Inner Page</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Inner Page</li>
+        </ol>
+      </div>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <!-- ======= Blog Section ======= -->
+  <section class="inner-page">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Confirm Delete</h2>
+        <p>Are you sure you want to delete this benchmark?</p>
+      </div>
+
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'benchmark_list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+
+    </div>
+  </section><!-- End Inner Page -->
+
+</main><!-- End #main -->
+
+{% endblock contenido %}

@@ -16,14 +16,21 @@ Including another URLconf
 """
 from django.urls import path
 
-from website.views import ContactCreateView, BenchmarkCreateView, TPfinsToolCreateView, search_benchmark, success_messages
+from website.views import ContactCreateView, BenchmarkCreateView, success_messages, BenchmarkListView, BenchmarkDeleteView, BenchmarkDetailView, BenchmarkUpdateView
+from accounts.views import profile
+
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path("contact/", ContactCreateView.as_view(), name="contact_us"),
     path("benchmark/", BenchmarkCreateView.as_view(), name="benchmark_request"),
-    path("tpfins/", TPfinsToolCreateView.as_view(), name="tpfins_tool"),
+    path('accounts/profile/', profile, name='profile'),
+    path('benchmarks/', BenchmarkListView.as_view(), name='benchmark_list'),
+    path('benchmark/<int:pk>/delete/', BenchmarkDeleteView.as_view(), name='benchmark_delete'),
+    path('benchmark/<int:pk>/', BenchmarkDetailView.as_view(), name='benchmark_detail'),    
+    path('benchmark/<int:pk>/edit/', BenchmarkUpdateView.as_view(), name='benchmark_edit'),
 
-    path("search-benchmarks/", search_benchmark, name="search_benchmark"),
+    path('accounts/logout/', LogoutView.as_view(next_page='inicio'), name='logout'),
 
     path("", success_messages, name="success_messages"),
 ]

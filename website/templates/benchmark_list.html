@@ -1,36 +1,61 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-<section>
-  <div>
-    <h1>Benchmark List</h1>
-    <br><br>
-    <form action="{% url 'search_benchmark' %}" method="post">
-      {% csrf_token %}
-      <input type="text" name="search">
-      <input type="submit" value="Search benchmarks by country">
-    </form>
-    <br>
+<main id="main">
 
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>Type Analysis</th>
-          <th>Country</th>
-          <th>Industry</th>
-          <th>Credit rating of the borrower</th>
-        </tr>
-        {% for benchmark in benchmarks %}
-        <tr>
-          <td>{{ benchmark.type_analysis }}</td>
-          <td>{{ benchmark.country }}</td>
-          <td>{{ benchmark.industry }}</td>
-          <td>{{ benchmark.credit_rating_borrower }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
 
-  </div>
-</section>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Inner Page</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Inner Page</li>
+        </ol>
+      </div>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <!-- ======= Blog Section ======= -->
+  <section class="inner-page">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Inner Page</h2>
+        <p>Example inner page template</p>
+      </div>
+
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Type Analysis</th>
+            <th>Country</th>
+            <th>Industry</th>
+            <th>Credit rating of the borrower</th>
+            <th>Actions</th> 
+          </tr>
+          {% for benchmark in benchmarks %}
+          <tr>
+            <td>{{ benchmark.type_analysis }}</td>
+            <td>{{ benchmark.country }}</td>
+            <td>{{ benchmark.industry }}</td>
+            <td>{{ benchmark.credit_rating_borrower }}</td>
+            <td>
+              <a href="{% url 'benchmark_detail' benchmark.pk %}">Details</a> |
+              <a href="{% url 'benchmark_edit' benchmark.pk %}">Edit</a> |
+              <a href="{% url 'benchmark_delete' benchmark.pk %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </section><!-- End Inner Page -->
+
+</main><!-- End #main -->
+
 {% endblock contenido %}
