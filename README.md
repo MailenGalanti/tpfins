@@ -16,7 +16,7 @@ Además, la página web también ofrece un buscador de benchmarks por país, lo 
 # Configuración del entorno de desarrollo
 Sigue estos pasos para configurar el entorno de desarrollo y ejecutar el proyecto localmente:
 
-Clona el repositorio de TPFins desde GitHub: git clone <URL_DEL_REPOSITORIO>
+Clona el repositorio de TPFins desde GitHub: git clone https://github.com/MailenGalanti/tpfins
 
 Ve al directorio del proyecto: cd tpfins
 
