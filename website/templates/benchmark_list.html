@@ -8,10 +8,10 @@
     <div class="container">
 
       <div class="d-flex justify-content-between align-items-center">
-        <h2>Inner Page</h2>
+        <h2>My Benchmark Requests</h2>
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Inner Page</li>
+          <li><a href="{% url 'inicio' %}">Home</a></li>
+          <li>My Benchmark Requests</li>
         </ol>
       </div>
 
@@ -23,8 +23,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-header">
-        <h2>Inner Page</h2>
-        <p>Example inner page template</p>
+        <h2>My Benchmark Requests</h2>
+        <p>See below the list with your benchmarking requests</p>
       </div>
 
 
@@ -35,21 +35,30 @@
             <th>Country</th>
             <th>Industry</th>
             <th>Credit rating of the borrower</th>
+            <th>Date</th>
             <th>Actions</th> 
           </tr>
-          {% for benchmark in benchmarks %}
-          <tr>
+          {% if benchmarks %}
+    {% for benchmark in benchmarks %}
+        <tr>
             <td>{{ benchmark.type_analysis }}</td>
             <td>{{ benchmark.country }}</td>
             <td>{{ benchmark.industry }}</td>
             <td>{{ benchmark.credit_rating_borrower }}</td>
+            <td>{{ benchmark.created_at }}</td>
             <td>
-              <a href="{% url 'benchmark_detail' benchmark.pk %}">Details</a> |
-              <a href="{% url 'benchmark_edit' benchmark.pk %}">Edit</a> |
-              <a href="{% url 'benchmark_delete' benchmark.pk %}">Delete</a>
+                <a href="{% url 'benchmark_detail' benchmark.pk %}">Details</a> |
+                <a href="{% url 'benchmark_edit' benchmark.pk %}">Edit</a> |
+                <a href="{% url 'benchmark_delete' benchmark.pk %}">Delete</a>
             </td>
-          </tr>
-          {% endfor %}
+        </tr>
+    {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="5">NO DATA</td>
+        </tr>
+    {% endif %}
+
         </tbody>
       </table>
 

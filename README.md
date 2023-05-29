@@ -33,3 +33,13 @@ Realiza las migraciones de la base de datos: python manage.py migrate
 Inicia el servidor de desarrollo: python manage.py runserver
 
 Una vez completados estos pasos, podrás acceder al sitio web de TPFins localmente en tu navegador web utilizando la URL http://localhost:8000/.
+
+Instrucciones para entrar al panel aministrativo de Django:
+Acceder con user y password via:
+127.0.0.1:8000/admin
+
+Superusuario de pruebas
+username:prueba_superadmin@hotmail.com contraseña:Chau123!
+
+Usuarios normales
+username:prueba@hotmail.com contraseña:Hola123!

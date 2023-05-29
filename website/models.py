@@ -21,6 +21,7 @@ class Benchmark(models.Model):
     principal = models.CharField(max_length=256)
     type_of_interest_rate = models.CharField(max_length=256)
     base_rate = models.CharField(max_length=256)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.type_analysis}, {self.country}"
